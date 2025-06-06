@@ -14,6 +14,10 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 # Whisper model configuration
 WHISPER_MODEL = "base"
 
+@app.get("/")
+async def hi():
+    return "WhisperAI's API is up and running!"
+
 @app.post("/transcribe/")
 async def transcribe(file: UploadFile = File(...), language: str = Form(...)):
     job_uuid = str(uuid.uuid4())
